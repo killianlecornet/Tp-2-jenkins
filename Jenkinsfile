@@ -9,7 +9,7 @@ pipeline {
         DOCKERHUB_PASSWORD = "${DOCKERHUB_PASSWORD_PSW}"
         RENDER_API_TOKEN = credentials('RENDER_API_TOKEN')
         RENDER_SERVICE_ID = "srv-cockhsa1hbls73csl2o0"
-        RENDER_DEPLOY_HOOK_URL_TP1 = credentials('RENDER_DEPLOY_HOOK_URL_TP1')
+        RENDER_DEPLOY_HOOK_URL_TP2 = credentials('RENDER_DEPLOY_HOOK_URL_TP2')
     }
 
     triggers {
@@ -45,17 +45,17 @@ pipeline {
             }
         }
 
-        // stage('Trigger Deploy to Render') {
-        //     steps {
-        //         // Utilisez withCredentials pour accéder à l'URL du webhook de manière sécurisée
-        //         withCredentials([string(credentialsId: 'RENDER_DEPLOY_HOOK_URL_TP1', variable: 'DEPLOY_HOOK_URL')]) {
-        //             script {
-        //                 // Envoi d'une requête POST au webhook de déploiement
-        //                 sh "curl -X POST ${DEPLOY_HOOK_URL}"
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Trigger Deploy to Render') {
+            steps {
+                // Utilisez withCredentials pour accéder à l'URL du webhook de manière sécurisée
+                withCredentials([string(credentialsId: 'RENDER_DEPLOY_HOOK_URL_TP2', variable: 'DEPLOY_HOOK_URL')]) {
+                    script {
+                        // Envoi d'une requête POST au webhook de déploiement
+                        sh "curl -X POST ${DEPLOY_HOOK_URL}"
+                    }
+                }
+            }
+        }
 
 
 
