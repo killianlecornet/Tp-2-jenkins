@@ -2,7 +2,7 @@
 FROM golang:1.16-alpine as builder
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR /jk-golang-webapp-books-main
+WORKDIR ./jk-golang-webapp-books-main
 
 # Copier les fichiers de dépendances pour mieux utiliser le cache des couches Docker
 COPY go.mod go.sum ./
