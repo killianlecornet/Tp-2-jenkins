@@ -2,7 +2,7 @@
 FROM golang:1.16-alpine as builder
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR /app
+WORKDIR ./Tp-2-jenkins
 
 # Copier les fichiers go.mod et go.sum
 COPY go.mod ./
