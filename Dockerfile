@@ -1,8 +1,8 @@
 # Étape de build
-FROM golang:1.16-alpine as builder
+FROM golang:1.22-alpine as builder
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR /Tp-2-jenkins
+WORKDIR /app
 
 # Copier les fichiers de dépendances pour mieux utiliser le cache des couches Docker
 COPY go.mod go.sum ./
