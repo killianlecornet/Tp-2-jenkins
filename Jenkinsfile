@@ -13,7 +13,7 @@ pipeline {
     }
 
     triggers {
-        // Vérifie le dépôt pour des changements toutes les 2 minutes
+        // Vérifie le dépôt pour des changements toutes les 2 minute
         pollSCM('H/2 * * * *')
     }
 
@@ -64,12 +64,12 @@ pipeline {
 
     post {
         success {
-            mail to: 'killian.lecornet@ynov.com',
+            mail to: 'notif-jenkins@joelkoussawo.me',
                  subject: "Succès du Pipeline ${env.JOB_NAME} ${env.BUILD_NUMBER}",
                  body: "Le pipeline a réussi. L'application a été déployée sur Render."
         }
         failure {
-            mail to: 'killian.lecornet@ynov.com',
+            mail to: 'notif-jenkins@joelkoussawo.me',
                  subject: "Échec du Pipeline ${env.JOB_NAME} ${env.BUILD_NUMBER}",
                  body: "Le pipeline a échoué. Veuillez vérifier Jenkins pour plus de détails."
         }
