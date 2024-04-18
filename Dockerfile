@@ -2,14 +2,13 @@
 FROM golang:1.16-alpine as builder
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR ./Tp-2-jenkins
+WORKDIR /Tp-2-jenkins
 
-# Copier les fichiers go.mod et go.sum
-COPY go.mod ./
-COPY go.sum ./
+# Copier les fichiers de dépendances pour mieux utiliser le cache des couches Docker
+COPY go.mod go.sum ./
 
-# Télécharger les dépendances
-RUN go mod download
+# Télécharger les dépendances et nettoyer les modules
+RUN go mod download && go mod tidy
 
 # Copier le reste des fichiers sources du projet
 COPY . .
