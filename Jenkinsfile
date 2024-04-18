@@ -45,17 +45,17 @@ pipeline {
             }
         }
 
-        stage('Trigger Deploy to Render') {
-            steps {
-                // Utilisez withCredentials pour accéder à l'URL du webhook de manière sécurisée
-                withCredentials([string(credentialsId: 'RENDER_DEPLOY_HOOK_URL_TP1', variable: 'DEPLOY_HOOK_URL')]) {
-                    script {
-                        // Envoi d'une requête POST au webhook de déploiement
-                        sh "curl -X POST ${DEPLOY_HOOK_URL}"
-                    }
-                }
-            }
-        }
+        // stage('Trigger Deploy to Render') {
+        //     steps {
+        //         // Utilisez withCredentials pour accéder à l'URL du webhook de manière sécurisée
+        //         withCredentials([string(credentialsId: 'RENDER_DEPLOY_HOOK_URL_TP1', variable: 'DEPLOY_HOOK_URL')]) {
+        //             script {
+        //                 // Envoi d'une requête POST au webhook de déploiement
+        //                 sh "curl -X POST ${DEPLOY_HOOK_URL}"
+        //             }
+        //         }
+        //     }
+        // }
 
 
 
